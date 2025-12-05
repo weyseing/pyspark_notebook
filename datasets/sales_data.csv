@@ -1,0 +1,6 @@
+store,product,quantity,price
+A,apple,100,0.50
+B,banana,150,0.25
+A,banana,50,0.25
+C,apple,200,0.50
+B,grape,75,1.00

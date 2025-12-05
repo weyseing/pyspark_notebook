@@ -1,0 +1,20 @@
+services:
+  pyspark_notebook:
+    image: jupyter/pyspark-notebook:latest
+    container_name: pyspark_notebook
+    working_dir: /home/jovyan/work
+    ports:
+      - "8888:8888" 
+      - "4040:4040" 
+    volumes:
+      - .:/home/jovyan/work
+    environment:
+      - SPARK_DRIVER_MEMORY=4g
+      - SPARK_WORKER_CORES=2
+      - JUPYTER_ENABLE_LAB=yes
+      - TINI_SUBREAPER=true
+    command: >
+      /bin/bash -c "
+      pip install --no-cache-dir -r requirements.txt && 
+      start-notebook.sh --NotebookApp.token='' --ip='0.0.0.0'
+      "
